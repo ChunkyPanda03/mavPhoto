@@ -1,2 +1,2 @@
 # mavPhoto
-not quite redy yet
+not quite ready yet
