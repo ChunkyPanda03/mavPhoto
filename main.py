@@ -13,23 +13,23 @@ import gphoto2 as gp
 def capture(p_output):
     logging.basicConfig(
         format='%(levelname)s: %(name)s: %(message)s', level=logging.WARNING)
-    p_output = "/tmp/camtest/"
+    p_output = '/tmp/camtest/'
     camera = gp.Camera()
     camera.init()
     file_path = camera.capture(gp.GP_CAPTURE_IMAGE)
-   # file_name = gp.gp_file_set_name(file_path, datetime.date.strftime('%m.%d.%Y.%X'))
-   # print(file_name)
     print('Camera file path: {0}/{1}'.format(file_path.folder, file_path.name))
     print(file_path.name)
-   # if not os.path.isfile(p_output):
-   #     os.mkdir(p_output)
+    print (os.path.isdir(p_output))
+    if os.path.isdir(p_output) != True:
+        os.path.mkdir(p_output)
     target = os.path.join(p_output, file_path.name)
     print('Copying image to', target)
     camera_file = camera.file_get(
         file_path.folder, file_path.name, gp.GP_FILE_TYPE_NORMAL)
     camera_file.save(target)
-    d_Time = datetime.date.today()
-    os.rename(target, "/tmp/camtest/" + d_Time.strftime('%m.%d.%Y.%X') + ".jpg")
+    d_date = datetime.date.today()
+    n_time = time.strftime("%H:%M:%S")
+    os.rename(target, "/tmp/camtest/" + d_date.strftime("%m.%d.%Y.") + n_time + ".jpg")
 
 def main():
     output = "/tmp/camtest/"
