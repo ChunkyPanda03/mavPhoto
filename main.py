@@ -8,9 +8,6 @@ import datetime
 import time
 
 import gphoto2 as gp
-class capn():
-    def __init__(self, output):
-        self.output = output
 def initialize():
     camera = gp.Camera()
     camlist = camera.autodetect()
