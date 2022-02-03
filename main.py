@@ -2,12 +2,11 @@ from __future__ import print_function
 
 import logging
 import os
-import subprocess
-import sys
 import datetime
 import time
-
 import gphoto2 as gp
+
+
 def initialize():
     camera = gp.Camera()
     camlist = camera.autodetect()
